@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>С Днём Всех Влюблённых ❤️</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #ffe4ec, #ffd6e0, #ffc2d1);
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    h1 {
+      font-size: clamp(32px, 6vw, 64px);
+      color: #e11d48;
+      margin-top: 60px;
+      animation: fadeDown 1.5s ease forwards;
+      opacity: 0;
+    }
+
+    p.subtitle {
+      margin-top: 20px;
+      font-size: clamp(18px, 3vw, 26px);
+      color: #444;
+      text-align: center;
+      max-width: 800px;
+      padding: 0 20px;
+      animation: fadeIn 2s ease forwards;
+      animation-delay: 0.8s;
+      opacity: 0;
+    }
+
+    .gallery {
+      margin-top: 60px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      width: 90%;
+      max-width: 1100px;
+    }
+
+    .photo {
+      height: 320px;
+      border-radius: 24px;
+      border: 3px dashed #fb7185;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #e11d48;
+      font-weight: 600;
+      text-align: center;
+      padding: 20px;
+      background: rgba(255,255,255,0.6);
+      backdrop-filter: blur(10px);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .photo:hover {
+      transform: scale(1.05);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+    }
+
+    .love-text {
+      margin-top: 70px;
+      font-size: clamp(22px, 4vw, 34px);
+      color: #be123c;
+      font-weight: 700;
+      text-align: center;
+      animation: pulse 2s infinite;
+    }
+
+    button {
+      margin: 40px 0 60px;
+      padding: 18px 40px;
+      font-size: 20px;
+      border: none;
+      border-radius: 40px;
+      background: #e11d48;
+      color: white;
+      cursor: pointer;
+      transition: transform 0.2s ease, background 0.3s ease;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    }
+
+    button:hover {
+      transform: scale(1.1);
+      background: #be123c;
+    }
+
+    footer {
+      margin-bottom: 30px;
+      color: #e11d48;
+      font-size: 14px;
+      opacity: 0.8;
+    }
+
+    /* Floating Hearts */
+    .heart {
+      position: fixed;
+      bottom: -20px;
+      font-size: 20px;
+      animation: floatUp linear infinite;
+      opacity: 0.7;
+    }
+
+    @keyframes floatUp {
+      from { transform: translateY(0) scale(1); opacity: 0.8; }
+      to { transform: translateY(-110vh) scale(1.5); opacity: 0; }
+    }
+
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+
+    @keyframes fadeDown {
+      from { transform: translateY(-30px); }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>С Днём Всех Влюблённых ❤️</h1>
+
+  <p class="subtitle">
+    Моя любимая, ты — самое прекрасное, что случилось в моей жизни.
+    Спасибо тебе за тепло, нежность и бесконечную любовь.
+  </p>
+
+  <div class="gallery">
+    <div class="photo">Здесь будет наша фотография №1</div>
+    <div class="photo">Здесь будет наша фотография №2</div>
+    <div class="photo">Здесь будет наша фотография №3</div>
+  </div>
+
+  <div class="love-text">
+    Я люблю тебя сегодня, завтра и всегда 💖
+  </div>
+
+  <button onclick="showLove()">Нажми сюда 💕</button>
+
+  <footer>Сделано с любовью 💘</footer>
+
+  <script>
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.innerText = '❤️';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.fontSize = (20 + Math.random() * 30) + 'px';
+      heart.style.animationDuration = (5 + Math.random() * 5) + 's';
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 10000);
+    }
+
+    setInterval(createHeart, 400);
+
+    function showLove() {
+      alert('Я бесконечно тебя люблю! 💞');
+    }
+  </script>
+
+</body>
+</html>
