@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>С Днём Всех Влюблённых ❤️</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #ffe4ec, #ffd6e0, #ffc2d1);
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    h1 {
+      font-size: clamp(32px, 6vw, 64px);
+      color: #e11d48;
+      margin-top: 60px;
+      animation: fadeDown 1.5s ease forwards;
+      opacity: 0;
+    }
+
+    p.subtitle {
+      margin-top: 20px;
+      font-size: clamp(18px, 3vw, 26px);
+      color: #444;
+      text-align: center;
+      max-width: 800px;
+      padding: 0 20px;
+      animation: fadeIn 2s ease forwards;
+      animation-delay: 0.8s;
+      opacity: 0;
+    }
+
+    .gallery {
+      margin-top: 60px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      width: 90%;
+      max-width: 1100px;
+    }
+
+    .photo {
+      height: 320px;
+      border-radius: 24px;
+      border: 3px dashed #fb7185;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #e11d48;
+      font-weight: 600;
+      text-align: center;
+      padding: 20px;
+      background: rgba(255,255,255,0.6);
+      backdrop-filter: blur(10px);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+
+    .photo:hover img {
+      transform: scale(1.05);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+    }
+
+    .love-text {
+      margin-top: 70px;
+      font-size: clamp(22px, 4vw, 34px);
+      color: #be123c;
+      font-weight: 700;
+      text-align: center;
+      animation: pulse 2s infinite;
+    }
+
+    button {
+      margin: 40px 0 60px;
+      padding: 18px 40px;
+      font-size: 20px;
+      border: none;
+      border-radius: 40px;
+      background: #e11d48;
+      color: white;
+      cursor: pointer;
+      transition: transform 0.2s ease, background 0.3s ease;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    }
+
+    button:hover {
+      transform: scale(1.1);
+      background: #be123c;
+    }
+
+    footer {
+      margin-bottom: 30px;
+      color: #e11d48;
+      font-size: 14px;
+      opacity: 0.8;
+    }
+
+    .heart {
+      position: fixed;
+      bottom: -20px;
+      font-size: 20px;
+      animation: floatUp linear infinite;
+      opacity: 0.7;
+      pointer-events: none;
+    }
+
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.6s ease;
+      z-index: 1000;
+    }
+
+    .overlay.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .gift-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      animation: dramaticAppear 0.8s ease forwards;
+    }
+
+    .gift-box {
+      font-size: 130px;
+      cursor: pointer;
+      animation: irresistible 1.2s infinite;
+      transition: transform 0.3s ease;
+      filter: drop-shadow(0 0 20px rgba(255,0,90,0.7));
+    }
+
+    .gift-box:hover {
+      transform: scale(1.25) rotate(5deg);
+    }
+
+    .click-me {
+      margin-top: 20px;
+      font-size: 28px;
+      font-weight: 800;
+      color: white;
+      letter-spacing: 3px;
+      animation: blink 1s infinite alternate;
+      text-shadow: 0 0 10px #ff4d88, 0 0 20px #ff1a66;
+    }
+
+    .strawberry-card {
+      margin-top: 40px;
+      background: white;
+      padding: 50px 40px;
+      border-radius: 30px;
+      text-align: center;
+      max-width: 500px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+      transform: scale(0);
+      transition: transform 0.6s ease;
+    }
+
+    .strawberry-card.show {
+      transform: scale(1);
+    }
+
+    @keyframes irresistible {
+      0% { transform: scale(1); }
+      25% { transform: scale(1.15); }
+      50% { transform: scale(1.05); }
+      75% { transform: scale(1.18); }
+      100% { transform: scale(1); }
+    }
+
+    @keyframes blink { from { opacity: 0.6; } to { opacity: 1; } }
+    @keyframes dramaticAppear { from { transform: scale(0); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+    @keyframes floatUp { from { transform: translateY(0) scale(1); opacity: 0.8; } to { transform: translateY(-110vh) scale(1.5); opacity: 0; } }
+    @keyframes fadeIn { to { opacity: 1; } }
+    @keyframes fadeDown { from { transform: translateY(-30px); } to { transform: translateY(0); opacity: 1; } }
+    @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
+  </style>
+</head>
+<body>
+
+  <h1>С Днём Всех Влюблённых ❤️</h1>
+
+  <p class="subtitle">
+    Моя любимая, ты — самое прекрасное, что случилось в моей жизни.
+    Спасибо тебе за тепло, нежность и бесконечную любовь.
+  </p>
+
+  <div class="gallery">
+    <div class="photo"><img src="/home/komandaf5/Загрузки/папка/photo2.jpg" alt="мы 1"></div>
+    <div class="photo"><img src="/home/komandaf5/Загрузки/папка/photo1.jpg" alt="мы 2"></div>
+    <div class="photo"><img src="/home/komandaf5/Загрузки/папка/photo3.jpg" alt="мы 3"></div>
+  </div>
+
+  <div class="love-text">
+    Я люблю тебя сегодня, завтра и всегда 💖
+  </div>
+
+  <button onclick="openGift()">Открыть мой подарок 🎁</button>
+
+  <footer>Сделано с любовью 💘</footer>
+
+  <div class="overlay" id="overlay" onclick="closeGift()">
+      <div class="gift-container" onclick="event.stopPropagation()">
+        <div class="gift-box" onclick="revealStrawberry()">🎁</div>
+        <div class="click-me">НАЖМИ МЕНЯ</div>
+        <div class="strawberry-card" id="strawberryCard">
+          <h2>Абонемент на клубнику в шоколаде 🍓🍫</h2>
+          <p>
+            Ты официально получаешь безлимитный абонемент
+            на клубнику в шоколаде от меня ❤️<br><br>
+            Доставка: по первому требованию.<br>
+            Срок действия: навсегда.
+          </p>
+        </div>
+      </div>
+  </div>
+
+  <script>
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.innerText = '❤️';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.fontSize = (20 + Math.random() * 30) + 'px';
+      heart.style.animationDuration = (5 + Math.random() * 5) + 's';
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 10000);
+    }
+    setInterval(createHeart, 400);
+
+    function openGift() {
+      document.getElementById('overlay').classList.add('active');
+    }
+
+    function revealStrawberry() {
+      document.getElementById('strawberryCard').classList.add('show');
+    }
+
+    function closeGift() {
+      document.getElementById('strawberryCard').classList.remove('show');
+      document.getElementById('overlay').classList.remove('active');
+    }
+  </script>
+
+</body>
+</html>
